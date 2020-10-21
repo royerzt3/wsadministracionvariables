@@ -1,0 +1,8 @@
+.vs
+WsAdministracionVariables/[Bb]in/
+WsAdministracionVariables/[Oo]bj/
+.sonarlint/
+WsAdministracionVariables/WsAdministracionVariables.ruleset
+WsAdministracionVariables/DLL
+WsAdministracionVariablesTest/[Oo]bj
+WsAdministracionVariablesTest/[Bb]in/
