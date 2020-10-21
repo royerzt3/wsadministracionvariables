@@ -6,4 +6,4 @@ guardado de las variables ya validadas
 
 ## Developer
 
-* Daniel del Rio Cruz @daniel
+* SISTEMAS LAM
