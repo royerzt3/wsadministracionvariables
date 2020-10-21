@@ -17,6 +17,9 @@ using WsAdministracionVariables.Negocio;
 
 namespace WsAdministracionVariables.Controllers
 {
+    /// <summary>
+    /// prueba con git
+    /// </summary>
     [ApiController]
     [Route("[controller]/api/")]
     public class VariablesController : ControllerBase
