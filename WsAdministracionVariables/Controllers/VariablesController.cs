@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
-using BibliotecaSimulador.LecturaVariablesSimulador;
-using BibliotecaSimulador.Pojos;
-using BibliotecaSimulador.SimuladorDAO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +14,9 @@ namespace WsAdministracionVariables.Controllers
 {
     /// <summary>
     /// prueba con git
-    /// Prueba Pau
+    /// Prueba Paugi
+    /// 
+    /// Cambios Prueba git comentario
     /// </summary>
     [ApiController]
     [Route("[controller]/api/")]
