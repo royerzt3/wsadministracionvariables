@@ -15,7 +15,7 @@ namespace WsAdministracionVariables.Controllers
     /// <summary>
     /// prueba con git
     /// Prueba Paugi
-    /// 
+    /// Cambio 3
     /// Cambios Prueba git comentario
     /// </summary>
     [ApiController]
