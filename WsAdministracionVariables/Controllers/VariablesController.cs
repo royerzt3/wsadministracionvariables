@@ -5,6 +5,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using BibliotecaSimulador.LecturaVariablesSimulador;
+using BibliotecaSimulador.Pojos;
+using BibliotecaSimulador.SimuladorDAO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -22,15 +25,14 @@ namespace WsAdministracionVariables.Controllers
     [Route("[controller]/api/")]
     public class VariablesController : ControllerBase
     {
-        private BibliotecaSimulador.Logs.Logg _log;
+        private readonly Credito.Core.Log.Logger _log;
         private readonly IConfiguration _configuration;
         private readonly string[] extensionesPermitidas = { ".XLS", ".XLSX" };
         private string Nombrelog { get; set; }
         public VariablesController(IConfiguration configuration)
         {
             this._configuration = configuration;
-            this.Nombrelog = this._configuration.GetValue<string>("NombreLogVariables");
-            this._log = new BibliotecaSimulador.Logs.Logg(this.Nombrelog);
+            _log = new Credito.Core.Log.Logger(typeof(VariablesController), _configuration.GetValue<string>("NombreLogVariables"));
         }
         public IActionResult Index()
         {
@@ -127,9 +129,9 @@ namespace WsAdministracionVariables.Controllers
             {
                 if (ex is UnauthorizedAccessException)
                 {
-                    if (this._log is null)
+                    if (_log is null)
                     {
-                        this._log = new BibliotecaSimulador.Logs.Logg(this.Nombrelog);
+                        //_log = new BibliotecaSimulador.Logs.Logg(this.Nombrelog);
                         this._log.WriteErrorService(ex, nameof(WsAdministracionVariables));
                         return StatusCode(StatusCodes.Status500InternalServerError,
                             new RespuestaError
@@ -137,7 +139,7 @@ namespace WsAdministracionVariables.Controllers
                                 errorMessage = this._configuration.GetValue<string>("Mensajes:Errores:CrearArchivoExcel")
                             });
                     }
-                    this._log.WriteErrorService(ex, nameof(WsAdministracionVariables));
+                   _log.WriteErrorService(ex, nameof(WsAdministracionVariables));
                     return StatusCode(StatusCodes.Status500InternalServerError,
                         new RespuestaError
                         {
@@ -148,7 +150,7 @@ namespace WsAdministracionVariables.Controllers
                 {
                     if (this._log is null)
                     {
-                        this._log = new BibliotecaSimulador.Logs.Logg(this.Nombrelog);
+
                         this._log.WriteErrorService(ex, nameof(WsAdministracionVariables));
                         return StatusCode(StatusCodes.Status500InternalServerError,
                             new RespuestaError
@@ -451,7 +453,6 @@ namespace WsAdministracionVariables.Controllers
                 {
                     if (this._log is null)
                     {
-                        this._log = new BibliotecaSimulador.Logs.Logg(this.Nombrelog);
                         this._log.WriteErrorService(ex, nameof(WsAdministracionVariables));
                         return StatusCode(StatusCodes.Status500InternalServerError,
                             new RespuestaError
@@ -470,8 +471,7 @@ namespace WsAdministracionVariables.Controllers
                 {
                     if (this._log is null)
                     {
-                        this._log = new BibliotecaSimulador.Logs.Logg(this.Nombrelog);
-                        this._log.WriteErrorService(ex, nameof(WsAdministracionVariables));
+                     this._log.WriteErrorService(ex, nameof(WsAdministracionVariables));
                         return StatusCode(StatusCodes.Status500InternalServerError,
                             new RespuestaError
                             {
