@@ -497,5 +497,25 @@ namespace WsAdministracionVariables.Controllers
             }
         }
 
+        [HttpGet("Test")]
+        public string Credits()
+        {
+            Stopwatch time = new Stopwatch();
+            time.Start();
+
+            Dictionary<string, string> creditos = new Dictionary<string, string>();
+
+            creditos.Add("Tipo proyecto", "Servicio Web");
+            creditos.Add("Nombre", "WsAdministracionVariables");
+            creditos.Add("Version Net Core", "3.1");
+            creditos.Add("Area", "Credito LAM");
+            creditos.Add("Servidor Activo", "OK");
+            creditos.Add("Version", "3.1");
+            creditos.Add("Cambio", "Metodos de Prueba con respuesta Json");
+            time.Stop();
+            _log.WriteAndCount($"Termina el test", time);
+            return System.Text.Json.JsonSerializer.Serialize(creditos);
+        }
+
     }
 }
